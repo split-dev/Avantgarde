@@ -1,0 +1,19 @@
+.services-intro {
+  ::v-deep .big-text {
+    padding-right: 10vw;
+    @media (max-width: $media-sm) {
+      font-size: 35px;
+    }
+    @media (max-width: $media-xs) {
+      padding-right: 0;
+    }
+  }
+
+  .services_teasers__row {
+    padding-left: 7vw;
+    padding-top: 78px !important;
+    @media (max-width: 1500px) {
+      padding-left: 0;
+    }
+  }
+}

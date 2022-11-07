@@ -1,0 +1,38 @@
+@import "animations_variables";
+
+.thoughts-section {
+  ::v-deep .vertical-text {
+    transform: translateX(-160px);
+    transition: transform ease-out 800ms;
+  }
+  ::v-deep .arrow-link {
+    transform: translateY(150px);
+    transition: transform ease-out 1200ms;
+  }
+  ::v-deep .thoughts-carousel-block {
+    opacity: 0;
+    transition: opacity ease-out 600ms;
+  }
+  ::v-deep .thoughts-carousel-block .swiper-wrapper .swiper-slide {
+    &:nth-child(2n) {
+      transition-delay: 100ms;
+    }
+    &:nth-child(3n) {
+      transition-delay: 200ms;
+    }
+    &:nth-child(4n) {
+      transition-delay: 300ms;
+    }
+  }
+  &.active-animate05, &.active-animated05 {
+    ::v-deep .arrow-link {
+      transform: translateY(0px);
+    }
+    ::v-deep .thoughts-carousel-block {
+      opacity: 1;
+    }
+    ::v-deep .vertical-text {
+      transform: translateX(0px);
+    }
+  }
+}

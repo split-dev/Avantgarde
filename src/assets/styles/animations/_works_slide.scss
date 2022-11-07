@@ -1,0 +1,35 @@
+@import "animations_variables";
+
+.work-carousel-section {
+  ::v-deep .vertical-text {
+    transform: translateX(-160px);
+    transition: transform ease-out 800ms;
+  }
+  ::v-deep .work-text-block {
+    opacity: 0;
+    transition: opacity ease-in 1200ms;
+  }
+  ::v-deep #big-swiper {
+    position: relative;
+    box-shadow: 0 0 0 20vw rgba(0, 0, 0, 1);
+    transition: all ease-in 700ms;
+    .swiper-wrapper {
+      transition: opacity ease-in 1200ms;
+      opacity: 0;
+    }
+  }
+  &.active-animate02, &.active-animated05 {
+    ::v-deep #big-swiper {
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      .swiper-wrapper {
+        opacity: 1;
+      }
+    }
+    ::v-deep .vertical-text {
+      transform: translateX(0px);
+    }
+    ::v-deep .work-text-block {
+      opacity: 1;
+    }
+  }
+}

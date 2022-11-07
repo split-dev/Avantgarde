@@ -1,0 +1,33 @@
+@import "../variables";
+
+.works-intro {
+  padding-top: 80px !important;
+  ::v-deep {
+    .hover-images-list {
+      position: relative;
+      z-index: 0;
+      align-self: flex-end;
+      margin: 0 157px 0 auto;
+      li {
+        text-align: right;
+      }
+      @media (max-width: $media-sm) {
+        margin-right: 0;
+      }
+    }
+
+    @media (max-width: $media-xs) {
+      padding-top: 53px !important;
+      padding-right: 42px !important;
+      .big-text-container {
+        padding-right: 0 !important;
+        padding-top: 0 !important;
+      }
+      .big-text {
+        padding-right: 65px;
+        font-size: 35px;
+        line-height: 40px;
+      }
+    }
+  }
+}

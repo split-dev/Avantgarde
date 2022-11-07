@@ -1,0 +1,2 @@
+$transition-function: cubic-bezier(.19,.7,.4,.85);
+$transition-slide-page: transform $transition-function 800ms, opacity ease-out 700ms;

@@ -1,0 +1,100 @@
+
+.big-text-with-image {
+  z-index: 3;
+  padding: 0;
+  ::v-deep .big-text-container {
+    padding: 70px 98px 600px 26px;
+    @media (max-width: $media-md) {
+      padding-bottom: 10vw;
+    }
+  }
+  ::v-deep .big-text {
+    text-align: center;
+    font-size: 170px;
+    line-height: 1;
+    @media (max-width: $media-md) {
+      font-size: 100px;
+      max-width: calc(100vw - 160px);
+    }
+    @media (max-width: $media-sm) {
+      font-size: 50px;
+      line-height: 65px;
+      max-width: 100%;
+    }
+  }
+  ::v-deep .line-bg {
+    display: none;
+  }
+  .v-image {
+    left: 50%;
+    top: 200px;
+    transform: translateX(-50%);
+    @media (max-width: $media-md) {
+      max-height: calc(100% - 270px);
+    }
+    @media (max-width: $media-sm) {
+      top: 270px;
+      min-height: 570px;
+      height: 570px !important;
+      left: 24px;
+      right: 24px;
+      transform: none;
+    }
+  }
+  @media (max-width: $media-sm) {
+    ::v-deep {
+      .vertical-text {
+        display: none;
+      }
+      .big-text-container {
+        padding: 40px 36px 532px 15px;
+      }
+    }
+  }
+  &.padding-small {
+    ::v-deep .big-text-container {
+      @media (min-width: $media-md) {
+        padding-bottom: 280px;
+      }
+    }
+  }
+  &.centred {
+    ::v-deep .vertical-text {
+      display: none !important;
+    }
+    ::v-deep .big-text-container {
+      padding-left: 19px !important;
+      padding-right: 19px;
+      @media (max-width: $media-md) {
+        padding-bottom: 37px;
+      }
+    }
+    ::v-deep .big-text {
+      margin-top: 400px;
+      @media (max-width: $media-sm) {
+        margin-top: 82px;
+      }
+    }
+    .v-image {
+      @media (max-width: $media-sm) {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        min-height: auto;
+        height: auto !important;
+        max-height: 100% !important;
+      }
+      @media (max-width: $media-xs) {
+        width: 100% !important;
+      }
+    }
+    ::v-deep .big-text-container {
+      @media (max-width: $media-sm) {
+        > .row {
+          position: relative;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+@import "../variables";
+
+.work-detail-intro-section {
+  padding-top: 163px;
+  @media (max-width: $media-sm) {
+    padding-top: 168px;
+  }
+  &-container {
+    padding-bottom: 136px;
+    padding-left: 0;
+    padding-right: 140px;
+
+    max-width: calc(100% - 160px);
+    @media (max-width: $media-sm) {
+      max-width: calc(100% - 60px);
+      padding-bottom: 50px;
+      padding-right: 37px;
+      padding-left: 17px;
+    }
+  }
+  .work-detail-intro-content {
+    padding-left: 120px;
+    @media (max-width: $media-sm) {
+      padding-left: 26px;
+    }
+  }
+  .arrow-link {
+    position: absolute;
+    top: 100px;
+    right: 140px;
+    left: auto;
+    @media (max-width: $media-sm) {
+      top: 70px;
+      right: 37px;
+    }
+  }
+  .v-image {
+    width: 100%;
+    @media (max-width: $media-sm) {
+      min-height: 467px;
+    }
+  }
+  .title-h1 {
+    & + p {
+      margin-top: 17px;
+      padding-left: 160px;
+      margin-bottom: 120px;
+      width: 60vw;
+      max-width: 1088px;
+      @media (max-width: $media-sm) {
+        margin-bottom: 158px;
+        margin-top: 38px;
+        padding-left: 0;
+      }
+    }
+    @media (max-width: $media-sm) {
+      color: $cyan-color;
+    }
+  }
+}

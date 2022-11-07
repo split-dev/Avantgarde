@@ -1,0 +1,31 @@
+@import "animations_variables";
+
+.big-intro-text-section {
+  ::v-deep .big-text:not(.invisible) {
+    opacity: 0;
+    line-height: 2;
+    margin: -32% 0;
+    transition: all $transition-function 1000ms;
+    @media (max-width: $media-sm) {
+      line-height: 1.7;
+      margin: -50% 0;
+    }
+  }
+  &:after,
+  &::after {
+    opacity: 0;
+    transition: opacity ease-in 800ms;
+  }
+  &.active, &.active-animated05 {
+    ::v-deep .big-text:not(.invisible) {
+      opacity: 1;
+      line-height: 1;
+      margin: 0 0;
+    }
+
+    &:after,
+    &::after {
+      opacity: 1;
+    }
+  }
+}

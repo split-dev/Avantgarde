@@ -1,0 +1,46 @@
+@import "../variables";
+
+.vertical-text {
+  // display: flex;
+  // flex-direction: column;
+  position: sticky;
+  // 92 - is a header height
+  top: calc(92px + 30px);
+  width: 160px;
+  max-width: 160px;
+  min-width: 160px;
+  height: 100%;
+  // align-self: flex-end;
+  padding-bottom: 50px;
+  padding-top: 150px;
+  z-index: 3;
+  // align-items: center;
+  // align-content: flex-end;
+  // justify-content: flex-end;
+  // position: relative;
+  h2 {
+    line-height: 200px;
+    font-size: 10.625rem;
+    white-space: nowrap;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+  @media (max-width: 1440px) {
+    h2 {
+      font-size: 8rem;
+      line-height: 225px;
+    }
+  }
+  @media (max-width: $media-sm) {
+    width: 60px;
+    max-width: 60px;
+    min-width: 60px;
+    padding-top: 156px;
+
+    h2 {
+      font-size: 3.125rem;
+      line-height: 60px;
+    }
+  }
+}

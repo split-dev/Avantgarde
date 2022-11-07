@@ -1,0 +1,81 @@
+.experts {
+    overflow: visible;
+    &__container {
+        padding: 48px 36px 74px 31px;
+        max-width: calc(100% - 160px);
+
+        @media (min-width: $media-md) {
+            padding: 146px 153px 51px 141px;
+        }
+        @media (max-width: $media-sm) {
+            max-width: calc(100% - 60px);
+
+            .title-great {
+                letter-spacing: -3px;
+            }
+        }
+    }
+    &__text {
+        @media (min-width: $media-sm) {
+            font-size: 25px;
+            line-height: 50px;
+        }
+        p:last-child {
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                height: 6px;
+                bottom: -12px;
+                left: 0;
+                width: 100%;
+                background-color: $cyan-color;
+                @media (min-width: $media-md) {
+                    width: calc(100% + 70px);
+                    bottom: -6px;
+                }
+            }
+        }
+    }
+    &__images {
+        overflow-x: scroll;
+        margin-right: -153px;
+        margin-bottom: 90px;
+        @media (max-width: $media-md) {
+            padding-right: 32px;
+            margin-right: -36px;
+        }
+        &__single-image {
+            &:not(:last-child) {
+                margin-right: 10px;
+                @media (min-width: $media-md) {
+                    margin-right: 100px;
+                }
+            }
+            @media (max-width: $media-sm) {
+                width: 205px;
+                &:nth-child(odd) {
+                    padding-top: 16px;
+                }
+            }
+            @media (min-width: $media-sm) {
+                &:nth-child(3n+1) {
+                    width: 298px;
+                    padding-top: 16px;
+                }
+                &:nth-child(3n+2) {
+                    width: 333px;
+                    padding-top: 44px;
+                }
+                &:nth-child(3n+3) {
+                    width: 332px;
+                }
+            }
+        }
+    }
+    &__decor {
+        left: 0;
+        right: 0;
+        top: -184px;
+    }
+}

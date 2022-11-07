@@ -1,0 +1,28 @@
+html,
+body,
+.v-application--wrap {
+  min-height: -webkit-fill-available;
+  font-family: $font-neuzeit;
+  /*scroll-behavior: smooth;*/
+}
+// Was removed due to the usage of position:sticky;
+// .v-application {
+  // overflow: hidden;
+// }
+
+// Class that would fix container width: 100% with .vertical-text
+// at some cases  
+.container--adjusted {
+  width: calc(100% - 60px) !important;
+  @media (min-width: $media-sm) {
+    width: calc(100% - 160px) !important;
+  }
+}
+.container--adjusted--mobile {
+  @media (max-width: $media-sm) {
+    width: calc(100% - 60px) !important;
+  }
+}
+.v-navigation-drawer--temporary {
+  z-index: 20;
+}

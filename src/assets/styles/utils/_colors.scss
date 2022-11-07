@@ -1,0 +1,38 @@
+.v-application {
+    .text-dark {
+        color: $dark-text;
+    }
+    .text-light {
+        color: $light-text !important;
+    }
+    .text-white {
+        color: white !important;
+    }
+    .text-black {
+        color: black !important;
+    }
+    .text-cyan {
+        color: $cyan-color !important;
+    }
+    .bg-dark {
+        background-color: $dark-bg !important;
+    }
+    .bg-white {
+        background-color: white !important;
+    }
+    .bg-light {
+        background-color: $light-text !important;
+    }
+}
+
+.theme--light.v-application,
+.theme--light.v-card,
+.theme--light {
+    border-color: $light-text;
+    color: $dark-text;
+    background: $light-text;
+    background-color: $light-text;
+}
+.theme--dark {
+    color: #ffffff;
+}

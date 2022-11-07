@@ -1,0 +1,33 @@
+.carousel-blocks {
+  ::v-deep {
+    .swiper-slide {
+      transform: translate(0, 150px);
+      opacity: 0;
+      transition: transform ease-out 600ms, opacity ease-in 400ms;
+      transition-delay: 0ms;
+      @media (max-width: $media-sm) {
+        transform: translate(50px, 0);
+      }
+      &:nth-child(2n) {
+        transition-delay: 100ms;
+      }
+      &:nth-child(3n) {
+        transition-delay: 200ms;
+      }
+      &:nth-child(4n) {
+        transition-delay: 300ms;
+      }
+      &:nth-child(4n) {
+        transition-delay: 400ms;
+      }
+    }
+  }
+  &.active-animate02, &.active-animated05 {
+    ::v-deep {
+      .swiper-slide {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+  }
+}

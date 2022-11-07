@@ -1,0 +1,37 @@
+@import "animations_variables";
+
+.locations-section {
+  .overlay {
+    transition: width ease-in-out 800ms;
+  }
+  ::v-deep .vertical-text {
+    transform: translateX(-160px);
+    transition: transform ease-out 800ms;
+  }
+  ::v-deep .v-image {
+    transition: opacity ease-in 1200ms;
+    opacity: 0;
+  }
+  ::v-deep .locations-list {
+    transition: opacity ease-in 100ms;
+    opacity: 0;
+  }
+  &.active, &.active-animated05 {
+    ::v-deep .locations-list {
+      opacity: 1;
+    }
+  }
+  &.active-animate05, &.active-animated05 {
+    ::v-deep .vertical-text {
+      transform: translateX(0px);
+    }
+    ::v-deep .v-image {
+      opacity: 1;
+    }
+  }
+  &.active-animated05, &.active {
+    .overlay {
+      width: 0;
+    }
+  }
+}

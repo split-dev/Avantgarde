@@ -1,0 +1,18 @@
+@import "animations_variables";
+
+[data-section="intro"] ::v-deep {
+  .title-h1, .arrow-link, .intro-image {
+    transition: $transition-slide-page;
+  }
+}
+[data-section="intro"]:not(.active) ::v-deep {
+  .intro-image {
+    display: none;
+  }
+}
+[data-section="intro"].active:not(.active-animate05) ::v-deep {
+  .title-h1, .arrow-link {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}

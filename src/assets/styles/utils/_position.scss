@@ -1,0 +1,10 @@
+.position-relative {
+    position: relative;
+}
+.position-absolute {
+    position: absolute;
+}
+.absolute-fill {
+    inset: 0;
+    @extend .position-absolute, .w-100, .h-100;
+}

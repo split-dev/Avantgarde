@@ -1,0 +1,122 @@
+variables:
+  PROJECT_NAME: ava-relaunch
+  DEV_FEAT_CONTAINER_NAME: $PROJECT_NAME-feat-$CI_COMMIT_REF_SLUG
+  DEV_MAIN_CONTAINER_NAME: $PROJECT_NAME-dev-main
+  PROD_CONTAINER_NAME: $PROJECT_NAME
+  PROD_PORT: 8080
+
+
+stages:
+  - dev_deploy
+  - prod_deploy
+
+
+.dockerBuildRun: &dockerBuildRun
+  script:
+    - DOCKER_BUILDKIT=1 docker build
+      --build-arg VUE_APP_SB_TOKEN=$VUE_APP_SB_TOKEN
+      --target=$DOCKER_TARGET -t $DOCKER_TAG .
+    - docker rm $CONTAINER_NAME ||
+      docker rm $(docker stop $CONTAINER_NAME) ||
+      echo "No previous container found."
+    - docker run -d
+      --name $CONTAINER_NAME
+      --restart on-failure:3
+      -e DEBUG=$DEBUG
+      -e VUE_APP_SB_TOKEN=$VUE_APP_SB_TOKEN
+      -e VIRTUAL_HOST=$VHOST
+      -p $HOST_PORT:$CONTAINER_PORT $DOCKER_TAG
+
+
+.dockerCleanup: &dockerCleanup
+  script:
+    - docker rm $CONTAINER_NAME ||
+      docker rm $(docker stop $CONTAINER_NAME) ||
+      echo "No previous container found."
+
+
+.devFeatCommon: &devFeatCommon
+  stage: dev_deploy
+  tags: [dev4]
+  except:
+    - main
+
+
+.devMainCommon: &devMainCommon
+  stage: dev_deploy
+  tags: [dev4]
+  only:
+    - main
+
+
+dev_feat_deploy:
+  <<: *devFeatCommon
+  <<: *dockerBuildRun
+  variables:
+    CONTAINER_NAME: $DEV_FEAT_CONTAINER_NAME
+    CONTAINER_PORT: 8080
+    DOCKER_TAG: $PROJECT_NAME:feat-$CI_COMMIT_REF_SLUG
+    DOCKER_TARGET: dev
+    VHOST: $PROJECT_NAME-feat-$CI_COMMIT_REF_SLUG.test.ava-digi.de
+    DEBUG: "true"
+  environment:
+    name: dev-feat/$CI_COMMIT_REF_SLUG
+    url: https://$VHOST/
+    on_stop: dev_feat_stop
+
+
+dev_feat_stop:
+  <<: *devFeatCommon
+  <<: *dockerCleanup
+  when: manual
+  environment:
+    name: dev-feat/$CI_COMMIT_REF_SLUG
+    action: stop
+  variables:
+    GIT_STRATEGY: none
+    CONTAINER_NAME: $DEV_FEAT_CONTAINER_NAME
+
+
+dev_main_deploy:
+  <<: *devMainCommon
+  <<: *dockerBuildRun
+  variables:
+    CONTAINER_NAME: $DEV_MAIN_CONTAINER_NAME
+    CONTAINER_PORT: 8080
+    DOCKER_TAG: $PROJECT_NAME:dev-main
+    DOCKER_TARGET: dev
+    VHOST: $PROJECT_NAME-dev-main.test.ava-digi.de
+    DEBUG: "true"
+  environment:
+    name: dev-main
+    url: https://$VHOST/
+    on_stop: dev_main_stop
+
+
+dev_main_stop:
+  <<: *devMainCommon
+  <<: *dockerCleanup
+  variables:
+    GIT_STRATEGY: none
+    CONTAINER_NAME: $DEV_MAIN_CONTAINER_NAME
+  environment:
+    name: dev-main
+    action: stop
+
+
+prod_deploy:
+  <<: *dockerBuildRun
+  stage: prod_deploy
+  only:
+    - main
+  when: manual
+  tags: [app3]
+  variables:
+    DOCKER_TARGET: prod
+    DOCKER_TAG: $PROJECT_NAME:prod
+    CONTAINER_NAME: $PROD_CONTAINER_NAME
+    HOST_PORT: $PROD_PORT
+    CONTAINER_PORT: 80
+  environment:
+    name: prod
+    url: https://ava2.avadigi.de

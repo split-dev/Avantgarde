@@ -1,0 +1,14 @@
+@import "animations_variables";
+
+.video-section {
+  ::v-deep .v-image {
+    opacity: 0;
+    transition: opacity ease-in 600ms;
+  }
+
+  &.active-animate05, &.active-animated05 {
+    ::v-deep .v-image {
+      opacity: 1;
+    }
+  }
+}

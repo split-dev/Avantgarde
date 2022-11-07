@@ -1,0 +1,31 @@
+.picture-items-section {
+  ::v-deep .v-image__image {
+    transform: scale(1);
+    transform-origin: left center;
+    transition: transform ease-in-out 800ms;
+  }
+  ::v-deep .items-list li {
+    transform: translateX(80px);
+    transition: transform ease-in-out 800ms;
+    &:nth-child(2n) {
+      transform: translateX(200px);
+      transition: transform ease-in-out 1000ms;
+    }
+  }
+
+  &.active-animate02 {
+    ::v-deep {
+      .items-list li {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &.active-animate03 {
+    ::v-deep {
+      .v-image__image {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

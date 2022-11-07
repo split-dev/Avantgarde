@@ -1,0 +1,47 @@
+@import "animations_variables";
+
+
+.works-carousel {
+  .work-item-section ::v-deep {
+    opacity: 0;
+    transition: opacity ease-in 600ms;
+    .vertical-text {
+      opacity: 0;
+      transform: translateY(600px);
+      transition: $transition-slide-page;
+    }
+    .v-image ~ * {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: $transition-slide-page;
+    }
+    .v-image {
+      transform-origin: center bottom;
+      transform: scale(0);
+      opacity: 0;
+      transition: $transition-slide-page;
+    }
+  }
+
+  .work-item-section.active-animate02:first-child ::v-deep,
+  .work-item-section.active-animated05 ::v-deep {
+    opacity: 1;
+
+    .vertical-text {
+      opacity: 1;
+      transform: translateY(-10vh);
+      @media (max-width: 400px) {
+        opacity: 1;
+        transform: translateY(-30vh);
+      }
+    }
+    .v-image ~ * {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .v-image {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

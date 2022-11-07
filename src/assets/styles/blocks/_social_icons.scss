@@ -1,0 +1,12 @@
+.social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: $dark-bg;
+  display: inline-block;
+  margin-right: 10px;
+  ::v-deep .v-icon__component {
+    width: auto;
+    height: auto;
+  }
+}

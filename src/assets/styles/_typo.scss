@@ -1,0 +1,104 @@
+@font-face {
+  font-family: 'Chronicle';
+  src: url('../src/assets/fonts/chronicledisp-xlight-webfont.woff2') format('woff2'),
+    url('../src/assets/fonts/chronicledisp-xlight-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neuzeit';
+  src: url('../src/assets/fonts/linotype_-_neuzeitofficepro-regular-webfont.woff2') format('woff2'),
+    url('../src/assets/fonts/linotype_-_neuzeitofficepro-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.light--text {
+  color: $light-text !important;
+}
+
+.dark--text {
+  color: $dark-text !important;
+}
+
+.black--text {
+  color: black !important;
+}
+
+@media (min-width: $media-md) {
+  .black-md--text {
+    color: black !important;
+  }
+}
+
+h1,
+h2,
+h3,
+.font-heading {
+  font-weight: normal;
+  font-family: $font-neuzeit;
+}
+
+.title-great {
+  font-size: 170px;
+  line-height: 165px;
+
+  @media (max-width: 1440px) {
+    font-size: 130px;
+    line-height: 1.2;
+  }
+
+  @media (max-width: $media-md) {
+    font-size: 100px;
+    line-height: 1.2;
+  }
+
+  @media (max-width: $media-sm) {
+    font-size: 50px;
+  }
+}
+
+.title-h1 {
+  font-size: 75px;
+  line-height: 80px;
+  @media (max-width: $media-sm) {
+    font-size: 35px;
+    line-height: 45px;
+  }
+}
+
+.title-h2 {
+  font-size: 45px;
+  line-height: 45px;
+
+  @media (max-width: $media-sm) {
+    font-size: 35px;
+    line-height: 45px;
+  }
+}
+
+.title-h3 {
+  font-size: 35px;
+  line-height: 40px;
+
+  @media (max-width: $media-sm) {
+    font-size: 25px;
+    line-height: 35px;
+  }
+}
+
+.body-text {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.body-pre-text {
+  font-size: 30px;
+  line-height: 1.2;
+  white-space: pre-line;
+
+  @media (max-width: $media-sm) {
+    font-size: 18px;
+  }
+}

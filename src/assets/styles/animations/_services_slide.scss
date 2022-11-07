@@ -1,0 +1,58 @@
+@import "animations_variables";
+
+.image-blocks {
+  /*overflow: visible;*/
+  ::v-deep .services_teasers__row {
+    .services_teasers__col {
+      transform: translate(0, 150px);
+      opacity: 0;
+      transition: transform ease-out 600ms, opacity ease-in 400ms;
+      transition-delay: 0ms;
+      @media (max-width: $media-sm) {
+        transform: translate(50px, 0);
+      }
+      &:nth-child(2n) {
+        transition-delay: 100ms;
+      }
+      &:nth-child(3n) {
+        transition-delay: 200ms;
+      }
+      &:nth-child(4n) {
+        transition-delay: 300ms;
+      }
+    }
+  }
+  ::v-deep .vertical-text {
+    transform: translateX(-160px);
+    transition: transform ease-out 700ms;
+  }
+  ::v-deep .arrow-link {
+    transition: transform ease-out 500ms, opacity ease-out 200ms;
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  &.active-animate02, &.active-animated05 {
+    ::v-deep .arrow-link {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+    ::v-deep .services_teasers__row {
+      .services_teasers__col {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+    ::v-deep .vertical-text {
+      transform: translateX(0px);
+    }
+  }
+}
+
+.page[data-active-views*="solutions"] {
+  .image-blocks:not(.active-animate02) {
+    ::v-deep .services_teasers__col {
+      transform: translate(0, -150px);
+      opacity: 0;
+    }
+  }
+}
