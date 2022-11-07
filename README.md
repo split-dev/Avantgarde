@@ -1,4 +1,4 @@
-# vue-front-wp
+# Vue.js & Storyblok
 
 ## Project setup
 ```bash
